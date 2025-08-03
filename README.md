@@ -144,10 +144,41 @@ The authenticity of host 'github.com (140.82.121.4)' can't be established. ED255
 ```
 Hi %ВАШ_АККАУНТ%! You've successfully authenticated, but GitHub does not provide shell access.
 ```
-
-
-
-
+## Связываем удаленный и локальный репозитории 
+### Привязать удалённый репозиторий к локальному — `git remote add`
+Перейдите на страницу удалённого репозитория, выберите тип SSH и скопируйте URL.
+Откройте консоль, перейдите в каталог локального репозитория и введите команду git remote add (от англ. remote — «удалённый» и add — «добавить»).
+```
+$ cd ~/dev/git_istruction
+$ git remote add origin git@github.com:%ИМЯ_АККАУНТА%/git_instruction.git
+```
+Команде необходимо передать два параметра: имя удалённого репозитория и его URL. В качестве имени используйте слово `origin`
+### Убедиться, что репозитории связаны, — `git remote -v`
+```
+$ git remote -v
+origin    git@github.com:%ИМЯ_АККАУНТА%/%ИМЯ-ПРОЕКТА%.git (fetch)
+origin    git@github.com:%ИМЯ_АККАУНТА%/%ИМЯ-ПРОЕКТА%.git (push)
+```
+## Синхронизация локального и удаленного репозитории 
+### Отправить изменения на удалённый репозиторий — `git push`
+В первый раз эту команду нужно вызвать с флагом -u и параметрами origin (имя удалённого репозитория) и main или master (название текущей ветки). Флаг -u свяжет локальную ветку с одноимённой удалённой. Как вы связывали локальный и удалённый репозитории в предыдущем уроке, так же и здесь нужно дополнительно связать ветки.
+```
+$ git push -u origin main # Если команда приведёт к ошибке, попробуйте 
+                          # заменить main на master. 
+```
+Появится такое сообщение: 
+```
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.78 KiB | 1.78 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:Melnik0va/mem.git
+   7420aaa..c8d6a3b  master -> master
+branch 'master' set up to track 'origin/master'.
+```
 
 
 
